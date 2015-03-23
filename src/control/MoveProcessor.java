@@ -113,7 +113,6 @@ public class MoveProcessor {
 							Piece piece = alt_board.getPieceAt(target);
 							if (piece.getColor().concat(piece.getType()).equals(board.getWhoseTurn().concat("K"))) {
 								if (alt_board.getPieceAt(loc).isMoveValid(alt_board, loc, target).valid) {
-									System.out.println("piece at " + loc + " causes check");
 									return false;
 								}
 							}
@@ -173,6 +172,72 @@ public class MoveProcessor {
 			parsed_moves[2] = tokz.nextToken().toString();
 		
 		return parsed_moves;
+	}
+
+
+	/**checks for checkmate, stalemate, check
+	 * @param board
+	 * @return moveresponse.valid will be true if player has a valid move
+	 */
+	public static MoveResponse checkMate(Board board) {
+		
+		boolean in_check = false;
+		boolean has_valid_move = false;
+		int king_loc = board.findKing(board.getWhoseTurn());
+		
+		//identify check on player's king
+		for (int loc = 1; loc < 65; loc++) {
+			if (board.hasPieceAt(loc)) {
+				//iterate through enemy piece and look for a valid attack
+				if (!board.getPieceAt(loc).getColor().equals(board.getWhoseTurn())) {
+					if (board.getPieceAt(loc).isMoveValid(board, loc, king_loc).valid) {
+						in_check = true;
+					}
+				}
+			}
+		}
+		
+		//check if player has a valid move by iterating through pieces and checking moves
+		for (int loc = 1; loc < 65; loc++) {
+			if (board.hasPieceAt(loc)) {
+				if (board.getPieceAt(loc).getColor().equals(board.getWhoseTurn())) {
+					for (int target = 1; target < 65; target++) {
+						if (board.getPieceAt(loc).isMoveValid(board, loc, target).valid) {
+							if (obeysCheck(board, loc, target)) {
+								if (board.hasPieceAt(target)) {
+									if (!board.getPieceAt(target).getColor().equals(board.getWhoseTurn())) {
+										has_valid_move = true;
+									}
+								} else {
+
+									has_valid_move = true;
+								}
+								
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
+		if (!has_valid_move) {
+			
+			if (in_check) {
+				return new MoveResponse(false, "checkmate");
+			} else {
+				return new MoveResponse(false, "stalemate");
+			}
+			
+		} else {
+		
+			if (in_check) {
+				return new MoveResponse(true, "check");
+			} else {
+				return new MoveResponse(true, "normal");
+			}
+		}
+		
 	}
 
 }

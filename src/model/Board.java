@@ -218,6 +218,10 @@ public class Board implements BoardInterface, Cloneable {
 		return status;
 	}
 	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	@Override
 	public String getWhoseTurn() {
 		return whose_turn;
@@ -250,6 +254,18 @@ public class Board implements BoardInterface, Cloneable {
 		}
 		
 		return clone;
+	}
+
+	public int findKing(String whoseTurn) {
+		for (int loc = 1; loc < 65; loc++) {
+			if (this.hasPieceAt(loc)) {
+				Piece piece = this.getPieceAt(loc);
+				if (piece.getType().equals("K") && piece.getColor().equals(whoseTurn)) {
+					return loc;
+				}
+			}
+		}
+		return -1;
 	}
 
 	

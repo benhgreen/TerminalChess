@@ -49,17 +49,14 @@ public class Board implements BoardInterface {
 		addPiece("w", "K", 5);
 
 		//add other black pieces
-//		addPiece("b", "R", 57);
-//		addPiece("b", "R", 64);
-//		addPiece("b", "N", 58);
-//		addPiece("b", "N", 63);
+		addPiece("b", "R", 57);
+		addPiece("b", "R", 64);
+		addPiece("b", "N", 58);
+		addPiece("b", "N", 63);
 		addPiece("b", "B", 59);
 		addPiece("b", "B", 62);
 		addPiece("b", "Q", 60);
 		addPiece("b", "K", 61);
-
-        addPiece("w", "p", 56);
-        addPiece("w", "p", 55);
 		
 		
 		//set status

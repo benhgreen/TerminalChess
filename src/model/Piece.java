@@ -3,17 +3,15 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**Interface for chess pieces
  * @author Ben Green & Kate Sussman
  *
  */
 public abstract class Piece {
 	
-	private String type;
-	private String color;
-	private boolean hasMoved;
+	protected String type;
+	protected String color;
+	protected boolean hasMoved;
 	
 	/**Getter for the piece's type (rook, knight, etc.)
 	 * @return Piece's type
@@ -29,26 +27,18 @@ public abstract class Piece {
 		return color;
 	}
 	
-	/**Checks piece color using a boolean
-	 * @return True if white, False if black
-	 */
-	public boolean isWhite() {
-		return color.equals("w");
-	}
-	
 	public boolean getHasMoved() {
 		return hasMoved;
+	}
+	
+	public void setMoved() {
+		hasMoved = true;
 	}
 
 	/**Get array of valid destination moves
 	 * @return
 	 */
-	public abstract ArrayList<Integer> getMoveRange();
-	
-	/**Get array of valid destination attacks (for pawns)
-	 * @return
-	 */
-	public abstract ArrayList<Integer> getAttackRange();
+	public abstract MoveResponse isMoveValid(Board board, Integer start, Integer end);
 
 
 }

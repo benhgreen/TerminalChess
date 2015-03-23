@@ -18,11 +18,7 @@ public class Board implements BoardInterface {
 	private HashMap<Integer, Piece> squares;
 	private String status;
 	private String whose_turn;
-	public static boolean willCapture = false;
-	public static boolean willCastle = false;
-	public static boolean promotion = false;
 	public static boolean draw = false;
-	public static boolean enPassant = false;
 	
 	/**Constructor for board, initializes with a fresh set of pieces
 	 * 
@@ -31,7 +27,6 @@ public class Board implements BoardInterface {
 		
 		//initialize squares
 		squares = new HashMap<Integer, Piece>();
-		//pawns = new ArrayList<Pawn>();
 	
 		
 //		//add white pawns
@@ -76,45 +71,44 @@ public class Board implements BoardInterface {
 		whose_turn = "w";
 	}
 	
-
 	@Override
-	public void addPiece(String color, String type, Integer location, boolean is_first_move) {
+	public void addPiece(String color, String type, Integer location) {
 		switch (type) {
 		
 			//handle pawns
 			case ("p"):
 			{
-				squares.put(location, new Pawn(color, type, is_first_move));
+				squares.put(location, new Pawn(color));
 				break;
 			}
 			//handle rooks
 			case ("R"):
 			{
-				squares.put(location, new Rook(color, type, is_first_move));
+				squares.put(location, new Rook(color));
 				break;
 			}
 			//handle knights
 			case ("N"):
 			{
-				squares.put(location, new Knight(color, type, is_first_move));
+				squares.put(location, new Knight(color));
 				break;
 			}
 			//handle bishops
 			case ("B"):
 			{
-				squares.put(location, new Bishop(color, type, is_first_move));
+				squares.put(location, new Bishop(color));
 				break;
 			}
 			//handle queens
 			case ("Q"):
 			{
-				squares.put(location, new Queen(color, type, is_first_move));
+				squares.put(location, new Queen(color));
 				break;
 			}
 			//handle king
 			case ("K"):
 			{
-				squares.put(location, new King(color, type, is_first_move));
+				squares.put(location, new King(color));
 				break;
 			}
 		}
@@ -135,7 +129,7 @@ public class Board implements BoardInterface {
 		System.out.println("moving piece");
 		Piece piece = getPieceAt(start_location);
 		squares.remove(start_location);
-		addPiece(piece.getColor(), piece.getType(), end_location, false);
+		addPiece(piece.getColor(), piece.getType(), end_location);
 		//switchPlayer();	
 	}
 	
@@ -155,30 +149,30 @@ public class Board implements BoardInterface {
 			//handle rooks
 			case ("R"):
 			{
-				squares.put(location, new Rook(color, type, false));
+				squares.put(location, new Rook(color));
 				break;
 			}
 			//handle knights
 			case ("N"):
 			{
-				squares.put(location, new Knight(color, type, false));
+				squares.put(location, new Knight(color));
 				break;
 			}
 			//handle bishops
 			case ("B"):
 			{
-				squares.put(location, new Bishop(color, type, false));
+				squares.put(location, new Bishop(color));
 				break;
 			}
 			//handle queens
 			case ("Q"):
 			{
-				squares.put(location, new Queen(color, type, false));
+				squares.put(location, new Queen(color));
 				break;
 			}	
 			default:
 			{
-				squares.put(location, new Queen(color, type, false));
+				squares.put(location, new Queen(color,));
 				break;
 			}
 		}
@@ -263,6 +257,10 @@ public class Board implements BoardInterface {
 	@Override
 	public String getWhoseTurn() {
 		return whose_turn;
+	}
+
+	public boolean hasPieceAt(Integer location) {
+		return squares.containsKey(location);
 	}
 
 	

@@ -4,7 +4,7 @@
 package control;
 
 import model.BoardInterface;
-import model.PieceInterface;
+import model.Piece;
 
 /**
  * @author Ben Green & Kate Sussman
@@ -23,7 +23,7 @@ public class BoardPrinter {
 			for (Integer y = 7; y >= 0; y--) {
 				
 				Integer location = x*8-y;
-				PieceInterface piece = board.getPieceAt(location);
+				Piece piece = board.getPieceAt(location);
 				
 				//handle printing empty squares
 				if (piece == null) {

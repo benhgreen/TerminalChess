@@ -66,7 +66,9 @@ public class CmdView {
 			
 		
 		}
-
+		
+		input.close();
+		
 	}
 
 }

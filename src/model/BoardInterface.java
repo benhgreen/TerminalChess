@@ -11,14 +11,6 @@ import java.util.HashMap;
  */
 public interface BoardInterface {
 	
-	enum status{
-		PROGRESSING, STALEMATE, DRAW, FINISHED, RESIGNED
-	}
-	
-	enum player{
-		WHITE, BLACK
-	}
-	
 	/**Add chess piece to board.
 	 * @param color Piece's color
 	 * @param type Piece's type
@@ -42,9 +34,18 @@ public interface BoardInterface {
 	 * @return Piece at location or null if no piece found
 	 */
 	
+	/**Replace piece with another new piece, used mainly for promotion
+	 * @param color
+	 * @param type
+	 * @param location
+	 */
 	public void replacePiece(String color, String type, Integer location);
 	
-	public PieceInterface getPieceAt(Integer location);
+	/**
+	 * @param location
+	 * @return Piece at said location, or null if no piece exists
+	 */
+	public Piece getPieceAt(Integer location);
 	
 	/**Switches current player when a turn has ended
 	 * 

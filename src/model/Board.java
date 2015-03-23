@@ -62,6 +62,7 @@ public class Board implements BoardInterface {
 		addPiece("b", "p", 10);
 		addPiece("w", "p", 1);
 		addPiece("w", "R", 8);
+		addPiece("w", "N", 12);
 		
 		
 		//set status
@@ -87,12 +88,12 @@ public class Board implements BoardInterface {
 				squares.put(location, new Rook(color));
 				break;
 			}
-//			//handle knights
-//			case ("N"):
-//			{
-//				squares.put(location, new Knight(color));
-//				break;
-//			}
+			//handle knights
+			case ("N"):
+			{
+				squares.put(location, new Knight(color));
+				break;
+			}
 //			//handle bishops
 //			case ("B"):
 //			{
@@ -142,20 +143,20 @@ public class Board implements BoardInterface {
 	public void replacePiece(String color, String type, Integer location) {
 		removePiece(location);
 		
-//		switch (type) {
-//		
-//			//handle rooks
-//			case ("R"):
-//			{
-//				squares.put(location, new Rook(color));
-//				break;
-//			}
-//			//handle knights
-//			case ("N"):
-//			{
-//				squares.put(location, new Knight(color));
-//				break;
-//			}
+		switch (type) {
+		
+			//handle rooks
+			case ("R"):
+			{
+				squares.put(location, new Rook(color));
+				break;
+			}
+			//handle knights
+			case ("N"):
+			{
+				squares.put(location, new Knight(color));
+				break;
+			}
 //			//handle bishops
 //			case ("B"):
 //			{
@@ -173,7 +174,7 @@ public class Board implements BoardInterface {
 //				squares.put(location, new Queen(color,));
 //				break;
 //			}
-//		}
+		}
 	}
 	
 	/*public void enPassant(Board board, String player, Integer start, Integer end)

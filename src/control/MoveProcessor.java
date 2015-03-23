@@ -20,8 +20,10 @@ public class MoveProcessor {
 		String[] parsed_moves = parseMove(move);
 		Integer[] parsed_move = new Integer[3];
 		
-		if (parsed_moves == null)
+		if (parsed_moves == null) {
+			System.err.println("no move parsed");
 			return false;
+		}
 		
 		parsed_move[0] = Integer.parseInt(parsed_moves[0]);
 		parsed_move[1] = Integer.parseInt(parsed_moves[1]);
@@ -36,28 +38,34 @@ public class MoveProcessor {
 		
 		//check that the piece exists
 		if (piece == null) {
+			System.err.println("tried to move an empty square");
 			return false;
 		
 		//check that the piece belongs to the current player
 		} else if (!piece.getColor().equals(board.getWhoseTurn())) {
+			System.err.println("tried to move an enemy piece");
 			return false;
 		}
 		
 		//make sure piece isn't trying to 'capture' a friend
 		if (board.hasPieceAt(end)) {
 			if (board.getPieceAt(end).getColor().equals(board.getWhoseTurn())) {
+				System.err.println("tried to capture a friend");
 				return false;
 			}
 		}
 		
 		MoveResponse response = piece.isMoveValid(board, start, end);
+	
 		
 		//analyze move further with helper method
 		if (!response.valid) {
+			System.err.println("move violates piece rules");
 			return false;
 		
 		//make sure move doesn't violate check rules TODO this
 		}else if (!obeysCheck(board, start, end)) {
+			System.err.println("move results in self-check");
 			return false;
 		}
 		
@@ -69,7 +77,7 @@ public class MoveProcessor {
 		switch(response.special) {
 		
 		case("castle"):
-			board.castle(board, parsed_move);
+			//board.castle(board, parsed_move);
 			break;
 		
 		case("promotion"):
@@ -92,7 +100,7 @@ public class MoveProcessor {
 	
 	private static boolean obeysCheck(Board board, Integer start, Integer end) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	/**Parses 'move' parameter into numbers representing current and destination squares
@@ -129,7 +137,7 @@ public class MoveProcessor {
 				return null;
 			
 			//check that letter is between a-h and number is between 1-8
-			} else if ((Character.getNumericValue(token.charAt(0))) > 17 || ((Character.getNumericValue(token.charAt(1)) > 8))) {
+			} else if ((Character.getNumericValue(token.charAt(0))) > 17 || ((Character.getNumericValue(token.charAt(1)) > 8)) || ((Character.getNumericValue(token.charAt(1)) < 1))) {
 
 				System.err.println("Invalid move range");
 				return null;

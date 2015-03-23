@@ -12,6 +12,7 @@ public abstract class Piece {
 	protected String type;
 	protected String color;
 	protected boolean hasMoved;
+	protected int direction;
 	
 	/**Getter for the piece's type (rook, knight, etc.)
 	 * @return Piece's type
@@ -31,7 +32,7 @@ public abstract class Piece {
 		return hasMoved;
 	}
 	
-	public void setMoved() {
+	public void markMoved() {
 		hasMoved = true;
 	}
 

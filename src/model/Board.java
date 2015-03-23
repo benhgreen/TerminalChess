@@ -59,9 +59,9 @@ public class Board implements BoardInterface {
 //		addPiece("b", "Q", 60, true);
 //		addPiece("b", "K", 61, true);
 		
-		addPiece("b", "p", 9, true);
-		addPiece("b", "p", 10, true);
-		addPiece("w", "p", 1, true);
+		addPiece("b", "p", 10);
+		addPiece("w", "p", 1);
+		addPiece("w", "R", 8);
 		
 		
 		//set status
@@ -87,39 +87,37 @@ public class Board implements BoardInterface {
 				squares.put(location, new Rook(color));
 				break;
 			}
-			//handle knights
-			case ("N"):
-			{
-				squares.put(location, new Knight(color));
-				break;
-			}
-			//handle bishops
-			case ("B"):
-			{
-				squares.put(location, new Bishop(color));
-				break;
-			}
-			//handle queens
-			case ("Q"):
-			{
-				squares.put(location, new Queen(color));
-				break;
-			}
-			//handle king
-			case ("K"):
-			{
-				squares.put(location, new King(color));
-				break;
-			}
+//			//handle knights
+//			case ("N"):
+//			{
+//				squares.put(location, new Knight(color));
+//				break;
+//			}
+//			//handle bishops
+//			case ("B"):
+//			{
+//				squares.put(location, new Bishop(color));
+//				break;
+//			}
+//			//handle queens
+//			case ("Q"):
+//			{
+//				squares.put(location, new Queen(color));
+//				break;
+//			}
+//			//handle king
+//			case ("K"):
+//			{
+//				squares.put(location, new King(color));
+//				break;
+//			}
 		}
 		
-		System.out.println("added piece at " + location + "number of pieces on board: " + squares.size());
 	}
 
 	@Override
 	public void removePiece(Integer location) {
 		squares.remove(location);
-		System.out.println("removed piece from " + location + " - number of pieces on board: " + squares.size());
 			
 		
 	}
@@ -130,7 +128,7 @@ public class Board implements BoardInterface {
 		Piece piece = getPieceAt(start_location);
 		squares.remove(start_location);
 		addPiece(piece.getColor(), piece.getType(), end_location);
-		//switchPlayer();	
+		getPieceAt(end_location).markMoved();
 	}
 	
 
@@ -144,38 +142,38 @@ public class Board implements BoardInterface {
 	public void replacePiece(String color, String type, Integer location) {
 		removePiece(location);
 		
-		switch (type) {
-		
-			//handle rooks
-			case ("R"):
-			{
-				squares.put(location, new Rook(color));
-				break;
-			}
-			//handle knights
-			case ("N"):
-			{
-				squares.put(location, new Knight(color));
-				break;
-			}
-			//handle bishops
-			case ("B"):
-			{
-				squares.put(location, new Bishop(color));
-				break;
-			}
-			//handle queens
-			case ("Q"):
-			{
-				squares.put(location, new Queen(color));
-				break;
-			}	
-			default:
-			{
-				squares.put(location, new Queen(color,));
-				break;
-			}
-		}
+//		switch (type) {
+//		
+//			//handle rooks
+//			case ("R"):
+//			{
+//				squares.put(location, new Rook(color));
+//				break;
+//			}
+//			//handle knights
+//			case ("N"):
+//			{
+//				squares.put(location, new Knight(color));
+//				break;
+//			}
+//			//handle bishops
+//			case ("B"):
+//			{
+//				squares.put(location, new Bishop(color));
+//				break;
+//			}
+//			//handle queens
+//			case ("Q"):
+//			{
+//				squares.put(location, new Queen(color));
+//				break;
+//			}	
+//			default:
+//			{
+//				squares.put(location, new Queen(color,));
+//				break;
+//			}
+//		}
 	}
 	
 	/*public void enPassant(Board board, String player, Integer start, Integer end)
@@ -211,34 +209,6 @@ public class Board implements BoardInterface {
 		
 	}*/
 	
-	public void castle(Board board, Integer[] location)
-	{
-		int start = location[0];
-		int end = location[1];
-		
-			if(start == 61 && end == 59)
-			{
-				board.movePiece(61, 59);
-				board.movePiece(57, 60);
-			}
-			if(start == 61 && end == 63)
-			{
-				board.movePiece(61, 63);
-				board.movePiece(64, 62);
-			}
-			if(start == 5 && end == 7)
-			{
-				board.movePiece(5, 7);
-				board.movePiece(8, 6);
-			}
-			if(start == 5 && end == 3)
-			{
-				board.movePiece(5, 3);
-				board.movePiece(1, 4);
-			}
-		}
-
-
 	@Override
 	public void switchPlayer() {
 		if (whose_turn.equals("w")) {
@@ -261,6 +231,14 @@ public class Board implements BoardInterface {
 
 	public boolean hasPieceAt(Integer location) {
 		return squares.containsKey(location);
+	}
+	
+	public void print() {
+		for (int i = 1; i < 65; i++) {
+			if (squares.containsKey(i)) {
+				System.out.println("piece at " + i + ": " + squares.get(i).getClass());
+			}
+		}
 	}
 
 	

@@ -62,9 +62,10 @@ public class MoveProcessor {
 		if (!response.valid) {
 			System.err.println("move violates piece rules");
 			return false;
+		}
 		
-		//make sure move doesn't violate check rules TODO this
-		}else if (!obeysCheck(board, start, end)) {
+		//make sure move doesn't violate check rules
+		if (!obeysCheck(board, start, end)) {
 			System.err.println("move results in self-check");
 			return false;
 		}
@@ -99,7 +100,28 @@ public class MoveProcessor {
 	
 	
 	private static boolean obeysCheck(Board board, Integer start, Integer end) {
-		// TODO Auto-generated method stub
+		Board alt_board = board.clone();
+		alt_board.movePiece(start, end);
+		
+		//find enemy pieces and check all their moves
+		//TODO not brute force this
+		for (int loc = 1; loc < 65; loc++) {
+			if (alt_board.hasPieceAt(loc)) {
+				if (!alt_board.getPieceAt(loc).getColor().equals(alt_board.getWhoseTurn())) {
+					for (int target = 1; target < 65; target++) {
+						if (alt_board.hasPieceAt(target)) {
+							Piece piece = alt_board.getPieceAt(target);
+							if (piece.getColor().concat(piece.getType()).equals(board.getWhoseTurn().concat("K"))) {
+								if (alt_board.getPieceAt(loc).isMoveValid(alt_board, loc, target).valid) {
+									System.out.println("piece at " + loc + " causes check");
+									return false;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		return true;
 	}
 	

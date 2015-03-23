@@ -78,7 +78,12 @@ public class MoveProcessor {
 		switch(response.special) {
 		
 		case("castle"):
-			//board.castle(board, parsed_move);
+			board.movePiece(start, end);
+			if (start > end) {
+				board.movePiece(end - 2, end + 1);
+			} else {
+				board.movePiece(end + 1, end - 1);
+			}
 			break;
 		
 		case("promotion"):
@@ -99,7 +104,7 @@ public class MoveProcessor {
 	}
 	
 	
-	private static boolean obeysCheck(Board board, Integer start, Integer end) {
+	public static boolean obeysCheck(Board board, Integer start, Integer end) {
 		Board alt_board = board.clone();
 		alt_board.movePiece(start, end);
 		

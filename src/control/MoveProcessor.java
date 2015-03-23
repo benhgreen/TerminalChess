@@ -105,6 +105,15 @@ public class MoveProcessor {
 
             System.out.println();
 			break;
+
+        case("en passant"):
+            board.movePiece(start,end);
+            if (board.getWhoseTurn().equals("w")) {
+                board.removePiece(end - 8);
+            } else {
+                board.removePiece(end + 8);
+            }
+            break;
 		
 		default:
 			board.movePiece(start, end);
@@ -120,7 +129,7 @@ public class MoveProcessor {
 	
 	
 	public static boolean obeysCheck(Board board, Integer start, Integer end) {
-		Board alt_board = board.clone();
+		Board alt_board = board.duplicate();
 		alt_board.movePiece(start, end);
 		
 		//find enemy pieces and check all their moves

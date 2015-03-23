@@ -235,7 +235,7 @@ public class Board implements BoardInterface {
 		}
 	}
 	
-	public Board clone() {
+	public Board duplicate() {
 		Board clone = new Board();
 		
 		clone.whose_turn = this.getWhoseTurn();

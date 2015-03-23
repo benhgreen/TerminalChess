@@ -37,7 +37,9 @@ public class Pawn extends Piece {
 		
 		//starting two-square move
 		if (end == start + direction * 16 && !board.hasPieceAt(end) && !this.hasMoved) {
-			return new MoveResponse(true, special);
+			if (!board.hasPieceAt(start + direction * 8)) {
+                return new MoveResponse(true, special);
+            }
 		}
 		
 		//attack diagonally
@@ -45,7 +47,16 @@ public class Pawn extends Piece {
 			return new MoveResponse(true, special);
 		}
 		
-		//TODO en passant
+		//en passant
+        if ((direction == 1 && getRow(end) == 6) || (direction == -1 && getRow(end) == 3)) {
+            if (!board.hasPieceAt(end)) {
+                if (board.hasPieceAt(end - direction * 8)) {
+                    if (board.getPieceAt(end - direction * 8).getType().equals("p") && !board.getPieceAt(end - direction * 8).getColor().equals(board.getWhoseTurn()))
+                        return new MoveResponse(true, "en passant");
+                }
+            }
+        }
+
 		
 		
 		return new MoveResponse(false, null);

@@ -42,7 +42,7 @@ public class Pawn extends Piece {
 			return new MoveResponse(true, "move");
 		}
 		
-		//en passant TODO not half-ass this
+		//TODO en passant and promotion
 		
 		
 		return new MoveResponse(false, null);

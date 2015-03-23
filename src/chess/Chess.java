@@ -1,7 +1,7 @@
 /**
  * 
  */
-package view;
+package chess;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ import model.Board;
  * @author Ben Green & Kate Sussman
  *
  */
-public class CmdView {
+public class Chess {
 
 	public static void main(String[] args) {
 		

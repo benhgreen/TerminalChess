@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author Ben Green & Kate Sussman
  *
  */
-public class Board implements BoardInterface, Cloneable {
+public class Board implements BoardInterface {
 	
 	/**HashMap of the 64 squares in the chessboard, keys numbered 1-64
 	 * 
@@ -47,7 +47,7 @@ public class Board implements BoardInterface, Cloneable {
 		addPiece("w", "B", 6);
 		addPiece("w", "Q", 4);
 		addPiece("w", "K", 5);
-		
+
 		//add other black pieces
 		addPiece("b", "R", 57);
 		addPiece("b", "R", 64);
@@ -216,10 +216,6 @@ public class Board implements BoardInterface, Cloneable {
 	@Override
 	public String getStatus() {
 		return status;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	
 	@Override

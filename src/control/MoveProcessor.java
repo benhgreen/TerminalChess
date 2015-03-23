@@ -3,6 +3,7 @@
  */
 package control;
 
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import model.Board;
@@ -88,7 +89,21 @@ public class MoveProcessor {
 		
 		case("promotion"):
 			board.movePiece(start, end);
-			board.replacePiece(board.getPieceAt(end).getColor(), option, end);
+
+			//query player for promoted type
+            Scanner input = new Scanner(System.in);
+            System.out.println("Promotion: Enter from RNBQ. Defaults to Q.");
+            String in = input.nextLine();
+
+            if (in.isEmpty()) {
+                board.replacePiece(board.getWhoseTurn(),"Q", end);
+            } else if (in.length() == 1 && "RNBQ".indexOf(in.toUpperCase().charAt(0)) != -1) {
+                board.replacePiece(board.getWhoseTurn(), in.toUpperCase(), end);
+            } else {
+                board.replacePiece(board.getWhoseTurn(),"Q", end);
+            }
+
+            System.out.println();
 			break;
 		
 		default:

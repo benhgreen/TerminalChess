@@ -8,7 +8,6 @@ public class Rook extends Piece {
 		this.hasMoved = false;
 	}
 
-	@Override
 	public MoveResponse isMoveValid(Board board, Integer start, Integer end) {
 		
 		//vertical

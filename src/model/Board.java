@@ -63,6 +63,8 @@ public class Board implements BoardInterface {
 		addPiece("w", "p", 1);
 		addPiece("w", "R", 8);
 		addPiece("w", "N", 12);
+		addPiece("w", "B", 24);
+		addPiece("w", "Q", 41);
 		
 		
 		//set status
@@ -94,18 +96,18 @@ public class Board implements BoardInterface {
 				squares.put(location, new Knight(color));
 				break;
 			}
-//			//handle bishops
-//			case ("B"):
-//			{
-//				squares.put(location, new Bishop(color));
-//				break;
-//			}
-//			//handle queens
-//			case ("Q"):
-//			{
-//				squares.put(location, new Queen(color));
-//				break;
-//			}
+			//handle bishops
+			case ("B"):
+			{
+				squares.put(location, new Bishop(color));
+				break;
+			}
+			//handle queens
+			case ("Q"):
+			{
+				squares.put(location, new Queen(color));
+				break;
+			}
 //			//handle king
 //			case ("K"):
 //			{
@@ -157,23 +159,23 @@ public class Board implements BoardInterface {
 				squares.put(location, new Knight(color));
 				break;
 			}
-//			//handle bishops
-//			case ("B"):
-//			{
-//				squares.put(location, new Bishop(color));
-//				break;
-//			}
-//			//handle queens
-//			case ("Q"):
-//			{
-//				squares.put(location, new Queen(color));
-//				break;
-//			}	
-//			default:
-//			{
-//				squares.put(location, new Queen(color,));
-//				break;
-//			}
+			//handle bishops
+			case ("B"):
+			{
+				squares.put(location, new Bishop(color));
+				break;
+			}
+			//handle queens
+			case ("Q"):
+			{
+				squares.put(location, new Queen(color));
+				break;
+			}	
+			default:
+			{
+				squares.put(location, new Queen(color));
+				break;
+			}
 		}
 	}
 	

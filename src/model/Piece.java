@@ -41,7 +41,7 @@ public abstract class Piece {
 	 */
 	public abstract MoveResponse isMoveValid(Board board, Integer start, Integer end);
 	
-	public static int getRow(int location) {
+	public static Integer getRow(int location) {
 		if (location % 8 == 0) {
 			return location / 8;
 		} else {
@@ -49,7 +49,7 @@ public abstract class Piece {
 		}
 	}
 	
-	public static int getColumn(int location) {
+	public static Integer getColumn(int location) {
 		if (location % 8 == 0) {
 			return 8;
 		} else {

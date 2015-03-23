@@ -37,6 +37,8 @@ public class Chess {
 			
 			move = input.nextLine();
 			
+			System.out.println();
+			
 			if(move.equals("resign"))
 			{
 				if(board.getWhoseTurn() == "b")

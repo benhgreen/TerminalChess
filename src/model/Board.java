@@ -119,7 +119,6 @@ public class Board implements BoardInterface {
 
 	@Override
 	public void movePiece(Integer start_location, Integer end_location) {
-		System.out.println("moving piece");
 		Piece piece = getPieceAt(start_location);
 		squares.remove(start_location);
 		addPiece(piece.getColor(), piece.getType(), end_location);

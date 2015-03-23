@@ -19,7 +19,6 @@ public class BoardPrinter {
 		
 		//iterate through board squares and print piece at each location
 		for (Integer x = 8; x > 0; x--) {
-			System.out.println();
 			for (Integer y = 7; y >= 0; y--) {
 				
 				Integer location = x*8-y;
@@ -47,10 +46,11 @@ public class BoardPrinter {
 			
 			//print row number
 			System.out.print(x);
+			System.out.println();
 		}
 		
 		//print column letters
-		System.out.print("\n a  b  c  d  e  f  g  h");
+		System.out.print(" a  b  c  d  e  f  g  h\n");
 		
 		//padding below board
 		System.out.println();

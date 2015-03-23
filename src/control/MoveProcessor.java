@@ -145,7 +145,6 @@ public class MoveProcessor {
 			
 			//put parsed location into return array
 			parsed_moves[x] = Integer.toString((Character.getNumericValue(token.charAt(0))-9) + (Character.getNumericValue(token.charAt(1)-1) * 8));
-			System.out.println(parsed_moves[x]);
 		}
 		
 		if(tokz.hasMoreTokens())

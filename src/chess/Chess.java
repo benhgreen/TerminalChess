@@ -19,7 +19,7 @@ public class Chess {
 		
 		//initialize scanner & move holder
 		Scanner input = new Scanner(System.in);
-		String move = "";
+		String move;
 		
 		//initialize board
 		Board board = new Board();
@@ -51,9 +51,9 @@ public class Chess {
 			}
 			
 			//query move
-			if (board.getWhoseTurn() == "w")
+			if (board.getWhoseTurn().equals("w"))
 				System.out.print("White's move: ");
-			else if (board.getWhoseTurn() == "b")
+			else if (board.getWhoseTurn().equals("b"))
 				System.out.print("Black's move: ");
 			
 			//get input
@@ -64,10 +64,10 @@ public class Chess {
 			
 			//check for resignation
 			if (move.equals("resign")) {
-				if (board.getWhoseTurn() == "b") {
+				if (board.getWhoseTurn().equals("b")) {
 					System.out.println("White wins");
 					System.exit(0);
-				} else if (board.getWhoseTurn() == "w") {
+				} else if (board.getWhoseTurn().equals("w")) {
 					System.out.println("Black wins");
 					System.exit(0);
 				}

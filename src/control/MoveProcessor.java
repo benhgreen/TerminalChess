@@ -174,15 +174,15 @@ public class MoveProcessor {
 		}
 		
 		if(tokz.hasMoreTokens())
-			parsed_moves[2] = tokz.nextToken().toString();
+			parsed_moves[2] = tokz.nextToken();
 		
 		return parsed_moves;
 	}
 
 
 	/**checks for checkmate, stalemate, check
-	 * @param board
-	 * @return moveresponse.valid will be true if player has a valid move
+	 * @param board Board to inspect
+	 * @return MoveResponse.valid will be true if player has a valid move
 	 */
 	public static MoveResponse checkMate(Board board) {
 		

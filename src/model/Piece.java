@@ -12,8 +12,7 @@ public abstract class Piece {
 	protected String type;
 	protected String color;
 	protected boolean hasMoved;
-	protected int direction;
-	
+
 	/**Getter for the piece's type (rook, knight, etc.)
 	 * @return Piece's type
 	 */
@@ -27,17 +26,13 @@ public abstract class Piece {
 	public String getColor() {
 		return color;
 	}
-	
-	public boolean getHasMoved() {
-		return hasMoved;
-	}
-	
+
 	public void markMoved() {
 		hasMoved = true;
 	}
 
-	/**Get array of valid destination moves
-	 * @return
+	/**Check if move is valid for piece (not including check rules)
+	 * @return MoveResponse.valid plus a special message for castling/en passant if necessary
 	 */
 	public abstract MoveResponse isMoveValid(Board board, Integer start, Integer end);
 	

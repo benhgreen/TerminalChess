@@ -20,10 +20,6 @@ public class Pawn extends Piece {
 		}
 	}
 	
-	public int getDirection() {
-		return direction;
-	}
-	
 	@Override
 	public MoveResponse isMoveValid(Board board, Integer start, Integer end) {
 		

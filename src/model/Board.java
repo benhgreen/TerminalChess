@@ -3,7 +3,6 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,42 +28,35 @@ public class Board implements BoardInterface {
 		squares = new HashMap<Integer, Piece>();
 	
 		
-//		//add white pawns
-//		for(Integer x = 9; x < 17; x++) {
-//			this.addPiece("w", "p", x, true);
-//		}
-//		
-//		//add black pawns
-//		for(Integer x = 49; x < 57; x++) {
-//			addPiece("b", "p", x, true);
-//		}
-//		
-//		//add other white pieces
-//		addPiece("w", "R", 1, true);
-//		addPiece("w", "R", 8, true);
-//		addPiece("w", "N", 2, true);
-//		addPiece("w", "N", 7, true);
-//		addPiece("w", "B", 3, true);
-//		addPiece("w", "B", 6, true);
-//		addPiece("w", "Q", 4, true);
-//		addPiece("w", "K", 5, true);
-//		
-//		//add other black pieces
-//		addPiece("b", "R", 57, true);
-//		addPiece("b", "R", 64, true);
-//		addPiece("b", "N", 58, true);
-//		addPiece("b", "N", 63, true);
-//		addPiece("b", "B", 59, true);
-//		addPiece("b", "B", 62, true);
-//		addPiece("b", "Q", 60, true);
-//		addPiece("b", "K", 61, true);
+		//add white pawns
+		for(Integer x = 9; x < 17; x++) {
+			this.addPiece("w", "p", x);
+		}
 		
-		addPiece("b", "p", 10);
-		addPiece("w", "p", 1);
+		//add black pawns
+		for(Integer x = 49; x < 57; x++) {
+			addPiece("b", "p", x);
+		}
+		
+		//add other white pieces
+		addPiece("w", "R", 1);
 		addPiece("w", "R", 8);
-		addPiece("w", "N", 12);
-		addPiece("w", "B", 24);
-		addPiece("w", "Q", 41);
+		addPiece("w", "N", 2);
+		addPiece("w", "N", 7);
+		addPiece("w", "B", 3);
+		addPiece("w", "B", 6);
+		addPiece("w", "Q", 4);
+		addPiece("w", "K", 5);
+		
+		//add other black pieces
+		addPiece("b", "R", 57);
+		addPiece("b", "R", 64);
+		addPiece("b", "N", 58);
+		addPiece("b", "N", 63);
+		addPiece("b", "B", 59);
+		addPiece("b", "B", 62);
+		addPiece("b", "Q", 60);
+		addPiece("b", "K", 61);
 		
 		
 		//set status
@@ -108,12 +100,12 @@ public class Board implements BoardInterface {
 				squares.put(location, new Queen(color));
 				break;
 			}
-//			//handle king
-//			case ("K"):
-//			{
-//				squares.put(location, new King(color));
-//				break;
-//			}
+			//handle king
+			case ("K"):
+			{
+				squares.put(location, new King(color));
+				break;
+			}
 		}
 		
 	}

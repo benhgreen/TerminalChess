@@ -3,8 +3,6 @@
  */
 package model;
 
-import java.util.HashMap;
-
 /**
  * @author Ben Green & Kate Sussman
  *

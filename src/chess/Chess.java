@@ -35,7 +35,7 @@ public class Chess {
 			MoveResponse response = MoveProcessor.checkMate(board);
 			if (!response.valid) {
 				if (response.special.equals("stalemate")) {
-					System.out.println("Stalemate!");
+					System.out.println("Stalemate");
 					System.exit(0);
 				} else {
 					if (board.getWhoseTurn().equals("w")) {
@@ -47,7 +47,7 @@ public class Chess {
 					}
 				}
 			} else if (response.special.equals("check")) {
-				System.out.println("You are in check.");
+				System.out.println("Check");
 			}
 			
 			//query move

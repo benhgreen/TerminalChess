@@ -3,12 +3,11 @@
  */
 package control;
 
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 import model.Board;
 import model.MoveResponse;
 import model.Piece;
+
+import java.util.StringTokenizer;
 
 /**
  * @author Ben Green & Kate Sussman
@@ -22,7 +21,7 @@ public class MoveProcessor {
 		Integer[] parsed_move = new Integer[3];
 		
 		if (parsed_moves == null) {
-			System.err.println("no move parsed");
+//			System.err.println("no move parsed");
 			return false;
 		}
 		
@@ -39,19 +38,19 @@ public class MoveProcessor {
 		
 		//check that the piece exists
 		if (piece == null) {
-			System.err.println("tried to move an empty square");
+//			System.err.println("tried to move an empty square");
 			return false;
 		
 		//check that the piece belongs to the current player
 		} else if (!piece.getColor().equals(board.getWhoseTurn())) {
-			System.err.println("tried to move an enemy piece");
+//			System.err.println("tried to move an enemy piece");
 			return false;
 		}
 		
 		//make sure piece isn't trying to 'capture' a friend
 		if (board.hasPieceAt(end)) {
 			if (board.getPieceAt(end).getColor().equals(board.getWhoseTurn())) {
-				System.err.println("tried to capture a friend");
+//				System.err.println("tried to capture a friend");
 				return false;
 			}
 		}
@@ -61,13 +60,13 @@ public class MoveProcessor {
 		
 		//analyze move further with helper method
 		if (!response.valid) {
-			System.err.println("move violates piece rules");
+//			System.err.println("move violates piece rules");
 			return false;
 		}
 		
 		//make sure move doesn't violate check rules
 		if (!obeysCheck(board, start, end)) {
-			System.err.println("move results in self-check");
+//			System.err.println("move results in self-check");
 			return false;
 		}
 		
@@ -90,20 +89,13 @@ public class MoveProcessor {
 		case("promotion"):
 			board.movePiece(start, end);
 
-			//query player for promoted type
-            Scanner input = new Scanner(System.in);
-            System.out.println("Promotion: Enter from RNBQ. Defaults to Q.");
-            String in = input.nextLine();
-
-            if (in.isEmpty()) {
-                board.replacePiece(board.getWhoseTurn(),"Q", end);
-            } else if (in.length() == 1 && "RNBQ".indexOf(in.toUpperCase().charAt(0)) != -1) {
-                board.replacePiece(board.getWhoseTurn(), in.toUpperCase(), end);
-            } else {
-                board.replacePiece(board.getWhoseTurn(),"Q", end);
+			if (option != null) {
+                if ("RNBQ".indexOf(option.charAt(0)) != -1) {
+                    board.replacePiece(board.getWhoseTurn(), option, end);
+                    break;
+                }
             }
-
-            System.out.println();
+            board.replacePiece(board.getWhoseTurn(), "Q", end);
 			break;
 
         case("en passant"):

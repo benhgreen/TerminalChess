@@ -83,7 +83,7 @@ public class Chess {
 			
 			//check move validity & make move
 			while (!MoveProcessor.processMove(board, move)) {
-				System.out.print("Illegal Move, try again: ");
+				System.out.print("Illegal move, try again: ");
 				move = input.nextLine();
                 System.out.println();
 			}

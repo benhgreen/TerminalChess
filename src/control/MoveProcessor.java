@@ -170,18 +170,18 @@ public class MoveProcessor {
 			
 			//check each location for length
 			if (token.length() != 2) {
-				System.err.println("Invalid number of moves");
+//				System.err.println("Invalid number of moves");
 				return null;
 			
 			//check that first char is a letter and second char is a number
 			} else if (!Character.isLetter(token.charAt(0)) || (!Character.isDigit(token.charAt(1)))) {
-				System.err.println("Invalid char types in moves");
+//				System.err.println("Invalid char types in moves");
 				return null;
 			
 			//check that letter is between a-h and number is between 1-8
 			} else if ((Character.getNumericValue(token.charAt(0))) > 17 || ((Character.getNumericValue(token.charAt(1)) > 8)) || ((Character.getNumericValue(token.charAt(1)) < 1))) {
 
-				System.err.println("Invalid move range");
+//				System.err.println("Invalid move range");
 				return null;
 			}
 			

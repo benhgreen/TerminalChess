@@ -1,7 +1,7 @@
 # TerminalChess
 Command-line implementation of chess in Java
 
-To implement:
+Implemented:
 
 * All legitimate basic moves for all pieces
 * Castling
@@ -13,3 +13,8 @@ To implement:
 * Resign
 * Draw
 * Drawing board display as specified
+* Stalemate in the form of no possible move
+
+To implement:
+
+* Stalemate in the form of three repeated moves

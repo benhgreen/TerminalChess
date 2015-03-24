@@ -1,6 +1,3 @@
-/**
- * 
- */
 package model;
 
 /**Interface for chess pieces

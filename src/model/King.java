@@ -2,6 +2,11 @@ package model;
 
 import control.MoveProcessor;
 
+/**
+ * @author Ben Green & Kate Sussman
+ *
+ */
+
 public class King extends Piece {
 	
 	public King(String color) {

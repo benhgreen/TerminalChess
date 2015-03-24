@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Ben Green & Kate Sussman
+ *
+ */
+
 public class Queen extends Piece {
 	
 	public Queen(String color) {

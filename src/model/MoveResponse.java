@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Ben Green & Kate Sussman
+ *
+ */
+
 public class MoveResponse {
 	
 	public boolean valid;

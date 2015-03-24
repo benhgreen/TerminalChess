@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Ben Green & Kate Sussman
+ *
+ */
+
 public class Rook extends Piece {
 	
 	public Rook(String color) {
@@ -28,7 +33,7 @@ public class Rook extends Piece {
 		if (Math.abs(end-start) < 8 && (start-1) / 8 == (end-1) / 8) {
 			
 			int direction = end.compareTo(start);
-			for (int x = start + direction * 1; x != end; x += direction) {
+			for (int x = start + direction; x != end; x += direction) {
 				if (board.hasPieceAt(x)) {
 					return new MoveResponse(false, null);
 				}

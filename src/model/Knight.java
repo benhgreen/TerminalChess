@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Ben Green & Kate Sussman
+ *
+ */
+
 public class Knight extends Piece {
 	
 	public Knight(String color) {
